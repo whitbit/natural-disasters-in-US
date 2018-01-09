@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-class NaturalDisasters(db.Model):
+class DisasterEvent(db.Model):
 
     __tablename__ = 'disasters'
 

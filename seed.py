@@ -16,4 +16,7 @@ def get_natural_disasters_data(csv_file):
 
     return events
 
+def load_events_into_db(events):
+    
+
 print get_natural_disasters_data('DisasterDeclarationsSummaries.csv')
