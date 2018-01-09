@@ -1,5 +1,4 @@
 from model import DisasterEvent, connect_to_db, db
-import datetime
 from server import app
 import csv, os
 

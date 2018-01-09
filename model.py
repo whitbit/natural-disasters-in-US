@@ -16,6 +16,20 @@ class DisasterEvent(db.Model):
 
         return "<Disaster id={}, state={}, type={}, date={}"
 
+def example_data():
+
+    DisasterEvent.query.delete()
+
+    event1 = DisasterEvent(state='CA',
+                           incident_type='Earthquake',
+                           start_date='10/17/1989')
+    event2 = DisasterEvent(state='CA',
+                           incident_type='Fire',
+                           start_date='12/11/2017')
+
+    db.session.add_all([event1, event2])
+    db.session.commit()
+
 def connect_to_db(app, db_uri=None):
 
     app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or 'postgres:///natural_disasters'
