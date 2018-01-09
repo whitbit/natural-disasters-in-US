@@ -9,9 +9,9 @@ def get_natural_disasters_data(csv_file):
 
     with open(csv_file) as data:
         disaster_data = list(csv.reader(data))
-        print len(disaster_data)
 
-        for row in disaster_data:
+        for i in range(1, len(disaster_data)):
+            row = disaster_data[i]
             events.append({ 'state': row[5],
                             'date': str(row[10][:10]),
                             'type': row[8]})
@@ -27,7 +27,7 @@ def load_events_into_db(events):
         
         event = DisasterEvent(state=state,
                               incident_type=incident_type,
-                              start_date='01/09/2018')
+                              start_date=date)
 
         db.session.add(event)
 
