@@ -1,6 +1,6 @@
-from model import NaturalDisasters, connect_to_db, db
+from model import DisasterEvent, connect_to_db, db
 from server import app
-import csv
+import csv, os
 
 def get_natural_disasters_data(csv_file):
 
@@ -11,12 +11,32 @@ def get_natural_disasters_data(csv_file):
 
         for row in disaster_data:
             events.append({ 'state': row[5],
-                            'date': row[10],
+                            'date': row[10][:10],
                             'type': row[8]})
 
     return events
 
 def load_events_into_db(events):
     
+    for event in events:
+        state, date, incident_type = (event['state'],
+                                  event['date'],
+                                  event['type'])
 
-print get_natural_disasters_data('DisasterDeclarationsSummaries.csv')
+        
+        event = DisasterEvent(state=state,
+                              incident_type=incident_type,
+                              start_date=date)
+
+        db.session.add(event)
+
+    db.session.commit()
+
+
+if __name__ == '__main__':
+    connect_to_db(app, os.environ.get('DATABASE_URL'))
+    
+    db.create_all()
+
+    events = get_natural_disasters_data('DisasterDeclarationsSummaries.csv')
+    load_events_into_db(events)
