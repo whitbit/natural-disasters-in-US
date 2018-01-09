@@ -1,4 +1,5 @@
 from model import DisasterEvent, connect_to_db, db
+import datetime
 from server import app
 import csv, os
 
@@ -7,11 +8,12 @@ def get_natural_disasters_data(csv_file):
     events = []
 
     with open(csv_file) as data:
-        disaster_data = csv.reader(data)
+        disaster_data = list(csv.reader(data))
+        print len(disaster_data)
 
         for row in disaster_data:
             events.append({ 'state': row[5],
-                            'date': row[10][:10],
+                            'date': str(row[10][:10]),
                             'type': row[8]})
 
     return events
@@ -22,11 +24,10 @@ def load_events_into_db(events):
         state, date, incident_type = (event['state'],
                                   event['date'],
                                   event['type'])
-
         
         event = DisasterEvent(state=state,
                               incident_type=incident_type,
-                              start_date=date)
+                              start_date='01/09/2018')
 
         db.session.add(event)
 
