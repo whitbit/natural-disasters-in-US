@@ -8,8 +8,13 @@ app = Flask(__name__)
 
 @app.route('/events-list')
 def displays_events():
+    """
+    Renders table filter page.
+    
+    """
     
     return render_template('/events.html')
+
 
 @app.route('/api/events', methods=['GET'])
 def get_events():
@@ -35,6 +40,10 @@ def get_events():
 
 
 def parse_date_input(date):
+    """
+    Converts unicode string to datetime object.
+
+    """
 
     return datetime.strptime(date, '%Y-%m-%d')
 
