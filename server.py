@@ -2,6 +2,7 @@
 from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from model import DisasterEvent, db, connect_to_db
+from datetime import date
 
 app = Flask(__name__)
 
@@ -17,10 +18,11 @@ def get_events():
     all_events = DisasterEvent.query.all()
 
     for event in all_events:
+        date = event.start_date.strftime('%B %m, %Y')
         events_list.append({ 'disaster_id': event.disaster_id,
                              'state': event.state,
                              'incident_type': event.incident_type,
-                             'start_date': event.start_date })
+                             'start_date': date })
 
 
     return jsonify(events_list)
