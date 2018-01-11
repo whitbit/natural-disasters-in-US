@@ -28,11 +28,11 @@ def get_events():
         return jsonify({}), 400
 
     event_types = request.args.getlist('event-type')
-    print event_types
+    
+    make_query_to_db(from_date, to_date, event_types)
 
 
-
-    all_events = DisasterEvent.query.all()
+    
 
     # for event in all_events:
     #     date = event.start_date.strftime('%B %m, %Y')
@@ -64,14 +64,14 @@ def validate_date_params(from_date, to_date):
     
 
 
-# def make_query_to_db(from_date, to_date, event_types):
+def make_query_to_db(from_date, to_date, event_types):
 
-#     q = DisasterEvent.query
+    q = DisasterEvent.query
 
-#     for event_type in event_types:
-#         q.filter(DisasterEvent.incident_type == event_type)
+    results = q.filter(DisasterEvent.incident_type.in_(event_types)).all()
 
-    # DisasterEvent.query.filter(DisasterEvent.incident_type == )
+    print results
+    return jsonify({})
 
 
 
