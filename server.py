@@ -11,17 +11,19 @@ def hello_world():
 
 @app.route('/events', methods=['GET'])
 def get_events():
-    events_dict = {}
+    
+    events_list = []
 
     all_events = DisasterEvent.query.all()
 
     for event in all_events:
-        events_dict[event.disaster_id] = { 'state': event.state,
-                                           'incident_type': event.incident_type,
-                                           'start_date': event.start_date }
+        events_list.append({ 'disaster_id': event.disaster_id,
+                             'state': event.state,
+                             'incident_type': event.incident_type,
+                             'start_date': event.start_date })
 
 
-    return jsonify(events_dict)
+    return jsonify(events_list)
 
 if __name__ == '__main__':
     connect_to_db(app)
