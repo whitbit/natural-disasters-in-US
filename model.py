@@ -14,7 +14,11 @@ class DisasterEvent(db.Model):
     def __repr__(self):
         """ Provides helpful representation when printed."""
 
-        return "<Disaster id={}, state={}, type={}, date={}"
+        return "<Disaster id={}, state={}, type={}, date={}".format(self.disaster_id,
+                                                                   self.state,
+                                                                   self.incident_type,
+                                                                   self.start_date)
+
 
 def example_data():
 
@@ -29,12 +33,13 @@ def example_data():
 
     db.session.add_all([event1, event2])
     db.session.commit()
+    
 
 def connect_to_db(app, db_uri=None):
 
     app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or 'postgres:///natural_disasters'
     app.config['SQLCHEMY_ECHO'] = True
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
 
