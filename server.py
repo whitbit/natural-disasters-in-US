@@ -1,5 +1,5 @@
 
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from model import DisasterEvent, db, connect_to_db
 from datetime import date
@@ -13,20 +13,25 @@ def displays_events():
 
 @app.route('/api/events', methods=['GET'])
 def get_events():
+    print "HELLO I GOT HERE"
+    from_date = request.args.get('from')
+    print 'FROM', from_date
+    to_date = request.args.get('to')
+    print 'TO', to_date
+    event_type = request.args.getlist('event-type')
+    print 'TYPE', event_type
 
-    start_date = request.args.get('startDate')
-    event_type = request.args.get('type')
     
     events_list = []
 
     all_events = DisasterEvent.query.all()
 
-    for event in all_events:
-        date = event.start_date.strftime('%B %m, %Y')
-        events_list.append({ 'disaster_id': event.disaster_id,
-                             'state': event.state,
-                             'incident_type': event.incident_type,
-                             'start_date': date })
+    # for event in all_events:
+    #     date = event.start_date.strftime('%B %m, %Y')
+    #     events_list.append({ 'disaster_id': event.disaster_id,
+    #                          'state': event.state,
+    #                          'incident_type': event.incident_type,
+    #                          'start_date': date })
 
     return jsonify(events_list)
 
