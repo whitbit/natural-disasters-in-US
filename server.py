@@ -19,6 +19,8 @@ def displays_events():
 @app.route('/api/events', methods=['GET'])
 def get_events():
 
+    events_info = []
+
     from_date = parse_date_input(request.args.get('from'))
 
     to_date = parse_date_input(request.args.get('to'))
@@ -29,19 +31,17 @@ def get_events():
 
     event_types = request.args.getlist('event-type')
     
-    make_query_to_db(from_date, to_date, event_types)
-
-
+    queried_events = make_query_to_db(from_date, to_date, event_types)
     
 
-    # for event in all_events:
-    #     date = event.start_date.strftime('%B %m, %Y')
-    #     events_list.append({ 'disaster_id': event.disaster_id,
-    #                          'state': event.state,
-    #                          'incident_type': event.incident_type,
-    #                          'start_date': date })
-
-    return jsonify({})
+    for event in queried_events:
+        date = event.start_date.strftime('%B %m, %Y')
+        events_info.append({ 'disaster_id': event.disaster_id,
+                             'state': event.state,
+                             'incident_type': event.incident_type,
+                             'start_date': date })
+    print events_info
+    return jsonify(events_info)
 
 
 def parse_date_input(date):
