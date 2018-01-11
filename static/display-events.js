@@ -4,14 +4,6 @@ function filterEvents(evt) {
 
     evt.preventDefault();
 
-    // var formInputs = {
-    //     'fromDate': $('#from').val(),
-    //     'toDate': $('#to').val(),
-    //     'event-type': "event-type"
-    // };
-
-    // $.get('/api/events', formInputs, rendersFilteredEvents);
-
     $.ajax({
         url: '/api/events',
         data: $('form').serialize(),

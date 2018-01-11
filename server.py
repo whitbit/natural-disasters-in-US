@@ -2,7 +2,7 @@
 from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from model import DisasterEvent, db, connect_to_db
-from datetime import date
+from datetime import date, datetime
 
 app = Flask(__name__)
 
@@ -13,16 +13,14 @@ def displays_events():
 
 @app.route('/api/events', methods=['GET'])
 def get_events():
-    print "HELLO I GOT HERE"
-    from_date = request.args.get('from')
-    print 'FROM', from_date
-    to_date = request.args.get('to')
-    print 'TO', to_date
-    event_type = request.args.getlist('event-type')
-    print 'TYPE', event_type
 
-    
-    events_list = []
+    from_date = parse_date_input(request.args.get('from'))
+
+    to_date = parse_date_input(request.args.get('to'))
+
+    event_types = request.args.getlist('event-type')
+
+
 
     all_events = DisasterEvent.query.all()
 
@@ -35,11 +33,19 @@ def get_events():
 
     return jsonify(events_list)
 
-def parse_params(start_date, type):
-    pass
 
-def validate_params():
-    pass
+def parse_date_input(date):
+
+    return datetime.strptime(date, '%Y-%m-%d')
+
+
+def validate_date_params(from_date, to_date):
+    """
+    Checks that dates entered by user are valid.
+
+    """
+    
+
 
 def make_query_to_db():
     pass
