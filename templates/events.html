@@ -5,9 +5,84 @@
         <title>Natural Disasters in the US</title>
     </head>
     <body>
-        
-        HELLO WORLD
-        
+        <h1>Filter your results</h1>
+        <form>
+            <h3>Dates</h3>
+            <label>From
+                <input id="begin-date" type="date"></label>
+            <label>To
+                <input id="end-date" type="date"></label>
+
+            <h3>Event Types</h3>
+            <div>
+                <input type="checkbox" id="flood" name="event-type" value="flood">
+                <label for="flood">flood</label><br>
+
+                <input type="checkbox" id="toxic-substances" name="event-type" value="toxic-substances">
+                <label for="toxic-substances">toxic-substances</label><br>
+
+                <input type="checkbox" id="fishing-losses" name="event-type" value="fishing-losses">
+                <label for="fishing-losses">fishing-losses</label><br>
+
+                <input type="checkbox" id="dam-levee-break" name="event-type" value="dam-levee-break">
+                <label for="dam-levee-break">dam-levee-break</label><br>
+
+                <input type="checkbox" id="volcano" name="event-type" value="volcano">
+                <label for="volcano">volcano</label><br>
+
+                <input type="checkbox" id="tsunami" name="event-type" value="tsunami">
+                <label for="tsunami">tsunami</label><br>
+
+                <input type="checkbox" id="terrorist" name="event-type" value="terrorist">
+                <label for="terrorist">terrorist</label><br>
+
+                <input type="checkbox" id="fire" name="event-type" value="fire">
+                <label for="fire">fire</label><br>
+
+                <input type="checkbox" id="drought" name="event-type" value="drought">
+                <label for="drought">drought</label><br>
+
+                <input type="checkbox" id="hurricane" name="event-type" value="hurricane">
+                <label for="hurricane">hurricane</label><br>
+
+                <input type="checkbox" id="freezing" name="event-type" value="freezing">
+                <label for="freezing">freezing</label><br>
+
+                <input type="checkbox" id="severe-storm" name="event-type" value="severe-storm">
+                <label for="severe-storm">severe-storm</label><br>
+
+                <input type="checkbox" id="severe-ice-storm" name="event-type" value="severe-ice-storm">
+                <label for="severe-ice-storm">severe-ice-storm</label><br>
+
+                <input type="checkbox" id="snow" name="event-type" value="snow">
+                <label for="snow">snow</label><br>
+
+                <input type="checkbox" id="coastal-storm" name="event-type" value="coastal-storm">
+                <label for="coastal-storm">coastal-storm</label><br>
+
+                <input type="checkbox" id="mud-landslide" name="event-type" value="mud-landslide">
+                <label for="mud-landslide">mud-landslide</label><br>
+
+                <input type="checkbox" id="typhoon" name="event-type" value="typhoon">
+                <label for="typhoon">typhoon</label><br>
+
+                <input type="checkbox" id="tornado" name="event-type" value="tornado">
+                <label for="tornado">tornado</label><br>
+
+                <input type="checkbox" id="human-cause" name="event-type" value="human-cause">
+                <label for="human-cause">human-cause</label><br>
+
+                <input type="checkbox" id="chemical" name="event-type" value="chemical">
+                <label for="chemical">chemical</label><br>
+
+                <input type="checkbox" id="earthquake" name="event-type" value="earthquake">
+                <label for="earthquake">earthquake</label><br>
+            </div>
+            <!-- event type -->
+            <input type="submit" value="Filter">
+        </form> 
+        <!-- form -->
+
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="/static/display-events.js"></script>
 
