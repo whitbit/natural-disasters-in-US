@@ -10,7 +10,7 @@ app = Flask(__name__)
 def displays_events():
     """
     Renders table filter page.
-    
+
     """
     
     return render_template('/events.html')
@@ -23,7 +23,12 @@ def get_events():
 
     to_date = parse_date_input(request.args.get('to'))
 
+
+    if to_date < from_date:
+        return jsonify({}), 400
+
     event_types = request.args.getlist('event-type')
+    print event_types
 
 
 
@@ -36,7 +41,7 @@ def get_events():
     #                          'incident_type': event.incident_type,
     #                          'start_date': date })
 
-    return jsonify(events_list)
+    return jsonify({})
 
 
 def parse_date_input(date):
@@ -53,11 +58,20 @@ def validate_date_params(from_date, to_date):
     Checks that dates entered by user are valid.
 
     """
+    if to_date < from_date:
+        print "HEY HERE"
+        return jsonify({}), 400
     
 
 
-def make_query_to_db():
-    pass
+# def make_query_to_db(from_date, to_date, event_types):
+
+#     q = DisasterEvent.query
+
+#     for event_type in event_types:
+#         q.filter(DisasterEvent.incident_type == event_type)
+
+    # DisasterEvent.query.filter(DisasterEvent.incident_type == )
 
 
 

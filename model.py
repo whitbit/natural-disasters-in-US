@@ -14,7 +14,7 @@ class DisasterEvent(db.Model):
     def __repr__(self):
         """ Provides helpful representation when printed."""
 
-        return "<Disaster id={}, state={}, type={}, date={}".format(self.disaster_id,
+        return "<Disaster id={}, state={}, type={}, date={}>".format(self.disaster_id,
                                                                    self.state,
                                                                    self.incident_type,
                                                                    self.start_date)
