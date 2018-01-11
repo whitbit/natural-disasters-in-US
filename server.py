@@ -1,17 +1,21 @@
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from model import DisasterEvent, db, connect_to_db
 from datetime import date
 
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-    return 'hello world'
+@app.route('/events-list')
+def displays_events():
+    
+    return render_template('/events.html')
 
-@app.route('/events', methods=['GET'])
+@app.route('/api/events', methods=['GET'])
 def get_events():
+
+    start_date = request.args.get('startDate')
+    event_type = request.args.get('type')
     
     events_list = []
 
@@ -24,8 +28,18 @@ def get_events():
                              'incident_type': event.incident_type,
                              'start_date': date })
 
-
     return jsonify(events_list)
+
+def parse_params(start_date, type):
+    pass
+
+def validate_params():
+    pass
+
+def make_query_to_db():
+    pass
+
+
 
 if __name__ == '__main__':
     connect_to_db(app)
