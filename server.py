@@ -65,16 +65,19 @@ def validate_date_params(from_date, to_date):
 
 
 def make_query_to_db(from_date, to_date, event_types):
+    """
+    Makes database query based on validated form inputs.
+
+    """
 
     q = DisasterEvent.query
-    print 'TYPE', event_types
-    results = q.filter((DisasterEvent.incident_type.in_(event_types))
-                       & (DisasterEvent.start_date >= from_date)
-                       & (DisasterEvent.start_date <= to_date)
-                      ).order_by('start_date').all()
 
-    print results
-    return jsonify({})
+    filtered_events = q.filter( (DisasterEvent.incident_type.in_(event_types))
+                                & (DisasterEvent.start_date >= from_date)
+                                & (DisasterEvent.start_date <= to_date)
+                              ).order_by('start_date').all()
+
+    return filtered_events
 
 
 
