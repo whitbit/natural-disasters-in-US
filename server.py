@@ -25,9 +25,8 @@ def get_events():
 
     to_date = parse_date_input(request.args.get('to'))
 
-
-    if to_date < from_date:
-        return jsonify({}), 400
+    if validate_date_params(from_date, to_date) is 'invalid':
+        return jsonify([]), 400
 
     event_types = request.args.getlist('event-type')
     
@@ -36,10 +35,10 @@ def get_events():
 
     for event in queried_events:
         date = event.start_date.strftime('%B %m, %Y')
-        events_info.append({ 'disaster_id': event.disaster_id,
+        events_info.append({ 'disasterId': event.disaster_id,
                              'state': event.state,
-                             'incident_type': event.incident_type,
-                             'start_date': date })
+                             'incidentType': event.incident_type,
+                             'startDate': date })
     print events_info
     return jsonify(events_info)
 
@@ -53,14 +52,14 @@ def parse_date_input(date):
     return datetime.strptime(date, '%Y-%m-%d')
 
 
+
 def validate_date_params(from_date, to_date):
     """
     Checks that dates entered by user are valid.
 
     """
     if to_date < from_date:
-        print "HEY HERE"
-        return jsonify({}), 400
+        return 'invalid'
     
 
 

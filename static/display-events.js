@@ -16,5 +16,23 @@ function filterEvents(evt) {
 }
 
 function rendersFilteredEvents(results) {
-    alert('It worked!')
+    
+    $('td').empty();
+
+    for(var i = 0; i < results.length; i++) {
+        $('table').append(buildTableRow(results[i]));
+    }
+}
+
+
+function buildTableRow(event) {
+    var state = event['state']
+    var incidentType = event['incidentType']
+    var startDate = event['startDate']
+    
+    return '<tr>\
+                <td>' + state + '</td> \
+                <td>' + incidentType + '</td> \
+                <td>' + startDate + '</td>\
+            <tr>'
 }
