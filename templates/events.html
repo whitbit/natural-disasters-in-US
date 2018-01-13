@@ -5,6 +5,7 @@
         <title>Natural Disasters in the US</title>
         <script src='https://api.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js'></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.css' rel='stylesheet' />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     </head>
     <body>
@@ -86,12 +87,12 @@
         </form> 
         <!-- form -->
 
-        <table>
+        <table class="table table-hover">
             <tr>
-                <th>State</th>
-                <th>Incident Type</th>
-                <th>Start Date</th>
-                <th># of Occurences</th>
+                <th scope="col">State</th>
+                <th scope="col">Incident Type</th>
+                <th scope="col">Start Date</th>
+                <th scope="col"># of Occurences</th>
             </tr>
         </table>
         <!-- table -->

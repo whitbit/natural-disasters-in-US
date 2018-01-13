@@ -31,7 +31,6 @@ def get_events():
     event_types = request.args.getlist('event_type')
     
     queried_events = make_query_to_db(from_date, to_date, event_types)
-    
 
     for event in queried_events:
         date = event.start_date.strftime('%Y/%m/%d')
@@ -40,7 +39,7 @@ def get_events():
                              'incidentType': event.incident_type,
                              'startDate': date,
                              'count': event.count })
-
+    print(events_info)
     return jsonify(events_info)
 
 
