@@ -6,97 +6,111 @@
         <script src='https://api.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js'></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.css' rel='stylesheet' />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href='/static/styles.css' rel='stylesheet' />
 
     </head>
     <body>
-        <h1>Filter your results</h1>
-        <form id="filter">
-            <h3>Dates</h3>
-            <label>From
-                <input id="from" type="date" name="from"></label><br>
-            <label>To
-                <input id="to" type="date" name="to"></label>
+        <div class="container">
+            <div class="row">
+                </div class="col-lg-8">
+                    <div id='map'></div>
+                </div>
+                <div class="col-lg-2">
+                    <h1>Filter your results</h1>
+                    <form id="filter">
+                        <h3>Dates</h3>
+                        <label>From
+                            <input id="from" type="date" name="from"></label><br>
+                        <label>To
+                            <input id="to" type="date" name="to"></label>
 
-            <h3>Event Types</h3>
-            <div>
-                <input type="checkbox" name="event_type" value="Flood">
-                <label for="flood">flood</label><br>
+                        <h3>Event Types</h3>
+                        <div>
+                            <input type="checkbox" name="event_type" value="Flood">
+                            <label for="flood">flood</label><br>
 
-                <input type="checkbox" name="event_type" value="Toxic Substances">
-                <label for="toxic-substances">toxic-substances</label><br>
+                            <input type="checkbox" name="event_type" value="Toxic Substances">
+                            <label for="toxic-substances">toxic-substances</label><br>
 
-                <input type="checkbox" name="event_type" value="Fishing Losses">
-                <label for="fishing-losses">fishing-losses</label><br>
+                            <input type="checkbox" name="event_type" value="Fishing Losses">
+                            <label for="fishing-losses">fishing-losses</label><br>
 
-                <input type="checkbox" name="event_type" value="Dam/Levee Break">
-                <label for="dam-levee-break">dam-levee-break</label><br>
+                            <input type="checkbox" name="event_type" value="Dam/Levee Break">
+                            <label for="dam-levee-break">dam-levee-break</label><br>
 
-                <input type="checkbox" name="event_type" value="Volcano">
-                <label for="volcano">volcano</label><br>
+                            <input type="checkbox" name="event_type" value="Volcano">
+                            <label for="volcano">volcano</label><br>
 
-                <input type="checkbox" name="event_type" value="Tsunami">
-                <label for="tsunami">tsunami</label><br>
+                            <input type="checkbox" name="event_type" value="Tsunami">
+                            <label for="tsunami">tsunami</label><br>
 
-                <input type="checkbox" name="event_type" value="Terrorist">
-                <label for="terrorist">terrorist</label><br>
+                            <input type="checkbox" name="event_type" value="Terrorist">
+                            <label for="terrorist">terrorist</label><br>
 
-                <input type="checkbox" name="event_type" value="Fire">
-                <label for="fire">fire</label><br>
+                            <input type="checkbox" name="event_type" value="Fire">
+                            <label for="fire">fire</label><br>
 
-                <input type="checkbox" name="event_type" value="Drought">
-                <label for="drought">drought</label><br>
+                            <input type="checkbox" name="event_type" value="Drought">
+                            <label for="drought">drought</label><br>
 
-                <input type="checkbox" name="event_type" value="Hurricane">
-                <label for="hurricane">hurricane</label><br>
+                            <input type="checkbox" name="event_type" value="Hurricane">
+                            <label for="hurricane">hurricane</label><br>
 
-                <input type="checkbox" name="event_type" value="Freezing">
-                <label for="freezing">freezing</label><br>
+                            <input type="checkbox" name="event_type" value="Freezing">
+                            <label for="freezing">freezing</label><br>
 
-                <input type="checkbox" name="event_type" value="Severe Storm(s)">
-                <label for="severe-storm">severe-storm</label><br>
+                            <input type="checkbox" name="event_type" value="Severe Storm(s)">
+                            <label for="severe-storm">severe-storm</label><br>
 
-                <input type="checkbox" name="event_type" value="Severe Ice Storm">
-                <label for="severe-ice-storm">Severe Ice Storm</label><br>
+                            <input type="checkbox" name="event_type" value="Severe Ice Storm">
+                            <label for="severe-ice-storm">Severe Ice Storm</label><br>
 
-                <input type="checkbox" name="event_type" value="Snow">
-                <label for="snow">snow</label><br>
+                            <input type="checkbox" name="event_type" value="Snow">
+                            <label for="snow">snow</label><br>
 
-                <input type="checkbox" name="event_type" value="Coastal Storm">
-                <label for="coastal-storm">coastal-storm</label><br>
+                            <input type="checkbox" name="event_type" value="Coastal Storm">
+                            <label for="coastal-storm">coastal-storm</label><br>
 
-                <input type="checkbox" name="event_type" value="Mud/Landslide">
-                <label for="mud-landslide">mud-landslide</label><br>
+                            <input type="checkbox" name="event_type" value="Mud/Landslide">
+                            <label for="mud-landslide">mud-landslide</label><br>
 
-                <input type="checkbox" name="event_type" value="Typhoon">
-                <label for="typhoon">typhoon</label><br>
+                            <input type="checkbox" name="event_type" value="Typhoon">
+                            <label for="typhoon">typhoon</label><br>
 
-                <input type="checkbox" name="event_type" value="Tornado">
-                <label for="tornado">tornado</label><br>
+                            <input type="checkbox" name="event_type" value="Tornado">
+                            <label for="tornado">tornado</label><br>
 
-                <input type="checkbox" name="event_type" value="Human-cause">
-                <label for="human-cause">human-cause</label><br>
+                            <input type="checkbox" name="event_type" value="Human-cause">
+                            <label for="human-cause">human-cause</label><br>
 
-                <input type="checkbox" name="event_type" value="Chemical">
-                <label for="chemical">chemical</label><br>
+                            <input type="checkbox" name="event_type" value="Chemical">
+                            <label for="chemical">chemical</label><br>
 
-                <input type="checkbox" name="event_type" value="Earthquake">
-                <label for="earthquake">earthquake</label><br>
+                            <input type="checkbox" name="event_type" value="Earthquake">
+                            <label for="earthquake">earthquake</label><br>
+                        </div>
+                        <!-- event type -->
+                        <input type="submit" value="Filter">
+                    </form> 
+                    <!-- form -->
+                </div>
+                <!-- col -->
+                <div class="col-lg-2">
+                    <table class="table table-hover">
+                        <tr>
+                            <th scope="col">State</th>
+                            <th scope="col">Incident Type</th>
+                            <th scope="col">Start Date</th>
+                            <th scope="col"># of Occurences</th>
+                        </tr>
+                    </table>
+                </div>
+                <!-- col -->
+
             </div>
-            <!-- event type -->
-            <input type="submit" value="Filter">
-        </form> 
-        <!-- form -->
-
-        <table class="table table-hover">
-            <tr>
-                <th scope="col">State</th>
-                <th scope="col">Incident Type</th>
-                <th scope="col">Start Date</th>
-                <th scope="col"># of Occurences</th>
-            </tr>
-        </table>
-        <!-- table -->
-        <div id='map'></div>
+            <!-- row -->
+        </div>
+        <!-- container -->
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="/static/filter-display-events.js"></script>
         <script src="/static/states-data.js"></script>
