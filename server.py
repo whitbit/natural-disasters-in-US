@@ -38,8 +38,9 @@ def get_events():
         events_info.append({ 'disasterId': event.disaster_id,
                              'state': event.state,
                              'incidentType': event.incident_type,
-                             'startDate': date })
-    print events_info
+                             'startDate': date,
+                             'count': event.count })
+
     return jsonify(events_info)
 
 
