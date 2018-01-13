@@ -3,6 +3,9 @@
 <html>
     <head>
         <title>Natural Disasters in the US</title>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.css' rel='stylesheet' />
+
     </head>
     <body>
         <h1>Filter your results</h1>
@@ -91,9 +94,12 @@
             </tr>
         </table>
         <!-- table -->
-
+        <div id='map'></div>
         <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="/static/display-events.js"></script>
+        <script src="/static/filter-display-events.js"></script>
+        <script src="/static/states-data.js"></script>
+        <script src="/static/display-map.js"></script>
+
 
     </body>
 </html>

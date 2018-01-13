@@ -10,6 +10,7 @@ class DisasterEvent(db.Model):
     state = db.Column(db.String(2), nullable=False)
     incident_type = db.Column(db.String(200), nullable=False, index=True)
     start_date = db.Column(db.DateTime, index=True)
+    count = db.Column(db.Integer)
 
     def __repr__(self):
         """ Provides helpful representation when printed."""
@@ -37,7 +38,7 @@ def example_data():
 
 def connect_to_db(app, db_uri=None):
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or 'postgres:///natural_disasters'
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or 'postgres:///disaster_event_counts'
     app.config['SQLCHEMY_ECHO'] = True
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app

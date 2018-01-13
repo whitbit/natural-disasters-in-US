@@ -28,13 +28,13 @@ def get_events():
     if validate_date_params(from_date, to_date) is 'invalid':
         return jsonify([]), 400
 
-    event_types = request.args.getlist('event-type')
+    event_types = request.args.getlist('event_type')
     
     queried_events = make_query_to_db(from_date, to_date, event_types)
     
 
     for event in queried_events:
-        date = event.start_date.strftime('%B %m, %Y')
+        date = event.start_date.strftime('%Y/%m/%d')
         events_info.append({ 'disasterId': event.disaster_id,
                              'state': event.state,
                              'incidentType': event.incident_type,
