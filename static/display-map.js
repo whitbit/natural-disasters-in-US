@@ -5,12 +5,11 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoid2hpdGJpdCIsImEiOiJjamNjZGFrdWwxNTY3MnlyM2Vlc
     maxZoom: 5.5,
     minZoom: 1.8,
     style: 'mapbox://styles/mapbox/light-v9',
-    center: [-115.36957574368233, 50.732480262447524],
-    zoom: 2.850019725398168
+    center: [-115.36957574368233, 40.732480262447524],
+    zoom: 2
   });
 
   map.on('load', function () {
-    map.resize()
 
     var layers = map.getStyle().layers;
 
