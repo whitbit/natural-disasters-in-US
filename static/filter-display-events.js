@@ -8,7 +8,10 @@ function filterEvents(evt) {
         url: '/api/events',
         data: $('form').serialize(),
         type: 'GET',
-        success: rendersFilteredEvents,
+        success: function(results) {
+            rendersFilteredEvents(results),
+            rendersMapDensities(results)
+        },
         error: function(error) {
             console.log(error)
         }
@@ -37,4 +40,8 @@ function buildTableRow(event) {
                 <td>' + startDate + '</td>\
                 <td>' + count + '</td>\
             <tr>'
+}
+
+function rendersMapDensities(results) {
+    
 }
