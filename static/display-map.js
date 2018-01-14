@@ -13,6 +13,8 @@ map.on('load', renderMap);
 
 function renderMap() {
 
+  
+
   var layers = map.getStyle().layers;
 
   // Find the index of the first symbol layer in the map style
@@ -53,15 +55,15 @@ function renderMap() {
 
 }
 
-map.on('click', 'us-states', function(e) {
-  var coordinates = almostFlatten(e.features[0].geometry.coordinates);
-  var bounds = new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]);
-  coordinates.forEach(function(coord) {
-    bounds.extend(coord);
-  })
+// map.on('click', 'us-states', function(e) {
+//   var coordinates = almostFlatten(e.features[0].geometry.coordinates);
+//   var bounds = new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]);
+//   coordinates.forEach(function(coord) {
+//     bounds.extend(coord);
+//   })
 
-  map.fitBounds(bounds, { padding: 100 });
-});
+//   map.fitBounds(bounds, { padding: 100 });
+// });
 
 
 // function almostFlatten(arr) {

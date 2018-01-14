@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    $('#loading').fadeOut('slow');
+})
+
 $(window).on("load", displayFilterOptions);
 
 function displayFilterOptions() {
@@ -13,7 +17,7 @@ function displayFilterOptions() {
 }
 
 function buildOptions(option) {
-   
+
     return '<input type="checkbox" name="event_type" value="' + option 
            + '"<label for="' + option + '">' + option + '</label><br>'
 
@@ -79,7 +83,7 @@ function getStateIncidentCounts(results) {
     var stateDisasterCounts = {};
 
     for(var i = 0; i < results.length; i++) {
-        var state = results[i]['state']
+        var state = results[i]['state'];
 
         if (state in stateDisasterCounts) {
             stateDisasterCounts[state] = stateDisasterCounts[state] + results[i]['count']
@@ -144,7 +148,7 @@ function convertToStateName(stateAbbrev) {
         'WV': 'West Virginia',
         'WI': 'Wisconsin',
         'WY': 'Wyoming'
-    }
+    };
 
     return stateConversions[stateAbbrev]
 }

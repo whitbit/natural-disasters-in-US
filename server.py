@@ -6,7 +6,7 @@ from datetime import date, datetime
 
 app = Flask(__name__)
 
-@app.route('/events_list')
+@app.route('/events')
 def displays_events():
     """
     Renders table filter page.
@@ -39,7 +39,7 @@ def get_events():
                              'incidentType': event.incident_type,
                              'startDate': date,
                              'count': event.count })
-    print(events_info)
+
     return jsonify(events_info)
 
 
@@ -48,9 +48,10 @@ def parse_date_input(date):
     Converts unicode string to datetime object.
 
     """
-
-    return datetime.strptime(date, '%Y-%m-%d')
-
+    try:
+        return datetime.strptime(date, '%Y-%m-%d')
+    except ValueError:
+        return 'invalid'
 
 
 def validate_date_params(from_date, to_date):
@@ -77,6 +78,7 @@ def make_query_to_db(from_date, to_date, event_types):
                               ).order_by('start_date').all()
 
     return filtered_events
+
 
 @app.route('/event_types')
 def get_distinct_event_types():

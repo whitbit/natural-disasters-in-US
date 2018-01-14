@@ -3,8 +3,6 @@
 <html>
     <head>
         <title>Natural Disasters in the US</title>
-        <script src='https://api.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js'></script>
-        <link href='https://api.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.css' rel='stylesheet' />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href='/static/styles.css' rel='stylesheet' />
 
@@ -15,13 +13,13 @@
                 <div class="col-lg-2 col-md-2 col-sm-2">
                     <h1>Filter by</h1>
                     <form id="filter">
-                        <h3>Date</h3>
+                        <h4>Date</h4>
                         <label>From
-                            <input id="from" type="date" name="from"></label><br>
+                            <input id="from" type="date" name="from" value="1953-01-01"></label><br>
                         <label>To
-                            <input id="to" type="date" name="to"></label>
+                            <input id="to" type="date" name="to" value="2017-12-31"></label>
 
-                        <h3>Event Type</h3>
+                        <h4>Event Type</h4>
                         <div id="filter-options"></div>
                         <!-- event type -->
                         <input type="submit" value="Filter">
@@ -30,6 +28,7 @@
                 </div>
                 <!-- col -->
                 <div class="col-lg-10 col-md-10 col-sm-10">
+                    <span id='loading'>Loading...</span>
                     <div id='map'></div>
                     <div class='map-overlay' id='features'>
                         <h2>US Natural disasters</h2>
@@ -54,9 +53,12 @@
         </div>
         <!-- container -->
         <script src="http://code.jquery.com/jquery.js"></script>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.css' rel='stylesheet' />
         <script src="/static/states-data.js"></script>
-        <script src="/static/display-filtered-events.js"></script>
         <script src="/static/display-map.js"></script>
+        <script src="/static/display-filtered-events.js"></script>
+        
         
 
 
