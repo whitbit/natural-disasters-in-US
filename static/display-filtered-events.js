@@ -77,8 +77,6 @@ function rendersMapDensities(results) {
     
     map.getSource('us-states').setData(updatedStatesData);
 
-    map.getStyle().layers;
-
 }
 
 

@@ -18,6 +18,11 @@ def displays_events():
 
 @app.route('/api/events', methods=['GET'])
 def get_events():
+    """
+    Takes in date and event type parameters to query database
+    and return Json.
+
+    """
 
     events_info = []
 
@@ -45,7 +50,7 @@ def get_events():
 
 def parse_date_input(date):
     """
-    Converts unicode string to datetime object.
+    Converts string to datetime object.
 
     """
     try:
@@ -83,6 +88,10 @@ def make_query_to_db(from_date, to_date, event_types):
 
 @app.route('/event_types')
 def get_distinct_event_types():
+    """
+    Gets list of distinct event types in database.
+
+    """
 
     event_types = db.session.query(DisasterEvent.incident_type).distinct().order_by('incident_type').all()
 
