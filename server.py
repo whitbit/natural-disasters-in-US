@@ -1,4 +1,4 @@
-
+import os
 from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from model import DisasterEvent, db, connect_to_db
@@ -99,6 +99,7 @@ def get_distinct_event_types():
 
 
 if __name__ == '__main__':
-    connect_to_db(app)
+    connect_to_db(app, os.environ.get('DATABASE_URL'))
     PORT = int(os.environ.get('PORT', 5000))
-    app.run(debug=True, host='0.0.0.0', port=PORT)
+    DEBUG = "NO_DEBUG" not in os.environ
+    app.run(debug=DEBUG, host='0.0.0.0', port=PORT)
