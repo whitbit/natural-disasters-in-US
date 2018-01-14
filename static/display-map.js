@@ -13,8 +13,6 @@ map.on('load', renderMap);
 
 function renderMap() {
 
-  
-
   var layers = map.getStyle().layers;
 
   // Find the index of the first symbol layer in the map style
@@ -25,8 +23,7 @@ function renderMap() {
           break;
       }
   }
-
-
+  
   var statesLayer = map.addLayer({
     'id': 'us-states',
     'type': 'fill',
@@ -55,25 +52,6 @@ function renderMap() {
 
 }
 
-// map.on('click', 'us-states', function(e) {
-//   var coordinates = almostFlatten(e.features[0].geometry.coordinates);
-//   var bounds = new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]);
-//   coordinates.forEach(function(coord) {
-//     bounds.extend(coord);
-//   })
-
-//   map.fitBounds(bounds, { padding: 100 });
-// });
-
-
-// function almostFlatten(arr) {
-//   return arr.reduce(function (flat, toFlatten) {
-//     return flat.concat(Array.isArray(toFlatten[0]) ? almostFlatten(toFlatten) : [toFlatten]);
-//   }, []);
-// }
-
-
-
 map.on('mousemove', function(e) {
   var states = map.queryRenderedFeatures(e.point, {
     layers: ['us-states']
@@ -81,7 +59,7 @@ map.on('mousemove', function(e) {
 
   if (states.length > 0) {
     document.getElementById('pd').innerHTML = '<h3><strong>' + states[0].properties.name + '</strong></h3> \
-                                              <p><strong><em>' + states[0].properties.density + '</strong> occurence(s)</em></p>';
+                                              <p><strong><em>' + states[0].properties.density + '</strong> total occurence(s)</em></p>';
   } else {
     document.getElementById('pd').innerHTML = '<p>Hover over a state or scroll down for table details!</p>'
   }

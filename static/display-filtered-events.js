@@ -29,6 +29,8 @@ function filterEvents(evt) {
 
     evt.preventDefault();
 
+    $('td').remove();
+
     $.ajax({
         url: '/api/events',
         data: $('form').serialize(),
@@ -38,15 +40,13 @@ function filterEvents(evt) {
             rendersMapDensities(results)
         },
         error: function(error) {
-            console.log(error)
+            console.error('Invalid date entered.')
         }
     })
 }
 
 
 function rendersFilteredEvents(results) {
-    
-    $('td').remove();
 
     for(var i = 0; i < results.length; i++) {
         $('table').append(buildTableRow(results[i]));
@@ -76,6 +76,9 @@ function rendersMapDensities(results) {
     var updatedStatesData = updateStateDensityData(statesData, incidentDensities);
     
     map.getSource('us-states').setData(updatedStatesData);
+
+    map.getStyle().layers;
+
 }
 
 
@@ -95,6 +98,21 @@ function getStateIncidentCounts(results) {
     return stateDisasterCounts
 }
 
+function updateStateDensityData(statesData, incidentCounts) {
+
+    var updatedStatesData = jQuery.extend(true, {}, statesData);
+
+    for(state in incidentCounts) {
+        
+        for(var i = 0; i < updatedStatesData.features.length; i++) {
+            if(convertToStateName(state) === updatedStatesData.features[i].properties.name) {
+                updatedStatesData.features[i].properties.density = incidentCounts[state]
+            }
+        }
+    }
+
+    return updatedStatesData
+}
 
 function convertToStateName(stateAbbrev) {
     var stateConversions = {
@@ -151,22 +169,5 @@ function convertToStateName(stateAbbrev) {
     };
 
     return stateConversions[stateAbbrev]
-}
-
-
-function updateStateDensityData(statesData, incidentCounts) {
-
-    var updatedStatesData = jQuery.extend(true, {}, statesData);
-
-    for(state in incidentCounts) {
-        
-        for(var i = 0; i < updatedStatesData.features.length; i++) {
-            if(convertToStateName(state) === updatedStatesData.features[i].properties.name) {
-                updatedStatesData.features[i].properties.density = incidentCounts[state]
-            }
-        }
-    }
-
-    return updatedStatesData
 }
 

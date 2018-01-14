@@ -26,7 +26,7 @@ def get_events():
     to_date = parse_date_input(request.args.get('to'))
 
     if validate_date_params(from_date, to_date) is 'invalid':
-        return jsonify([]), 400
+        return jsonify({}), 400
 
     event_types = request.args.getlist('event_type')
     
@@ -61,7 +61,8 @@ def validate_date_params(from_date, to_date):
     """
     if to_date < from_date:
         return 'invalid'
-    
+    elif from_date == 'invalid' or to_date == 'invalid':
+        return 'invalid'
 
 
 def make_query_to_db(from_date, to_date, event_types):
