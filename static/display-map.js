@@ -49,6 +49,8 @@ function renderMap() {
     }
   }, firstSymbolId);
 
+  build_legend();
+
 
 }
 
@@ -59,8 +61,31 @@ map.on('mousemove', function(e) {
 
   if (states.length > 0) {
     document.getElementById('pd').innerHTML = '<h3><strong>' + states[0].properties.name + '</strong></h3> \
-                                              <p><strong><em>' + states[0].properties.density + '</strong> total occurence(s)</em></p>';
+                                              <p><strong><em>' + states[0].properties.density + '</strong> \
+                                              total occurence(s)</em></p>';
   } else {
     document.getElementById('pd').innerHTML = '<p>Hover over a state or scroll down for table details!</p>'
   }
 });
+
+
+function build_legend(){
+
+  var layers = ['0-10', '10-20', '20-50', '50-100', '100-200', '200-500', '500-1000', '1000+'];
+  var colors = ['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#BD0026', '#500018'];
+  
+  for (i = 0; i < layers.length; i++) {
+    var layer = layers[i];
+    var color = colors[i];
+    var item = document.createElement('div');
+    var key = document.createElement('span');
+    key.className = 'legend-key';
+    key.style.backgroundColor = color;
+
+    var value = document.createElement('span');
+    value.innerHTML = layer;
+    item.appendChild(key);
+    item.appendChild(value);
+    legend.appendChild(item);
+  }
+}

@@ -103,8 +103,7 @@ class TestDateMethods(TestCase):
         
         self.assertEqual(validate_date_params(from_date, to_date),
                         'invalid')
-                                 
-
+        
 
 if __name__ == '__main__':
     import unittest
