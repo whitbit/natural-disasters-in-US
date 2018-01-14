@@ -44,7 +44,7 @@ def example_data():
 
 def connect_to_db(app, db_uri=None):
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or 'postgres:///disaster_event_counts'
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or 'postgres:///disaster_events'
     app.config['SQLCHEMY_ECHO'] = True
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app

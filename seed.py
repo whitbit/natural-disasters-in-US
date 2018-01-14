@@ -13,7 +13,7 @@ def get_natural_disasters_data(csv_file):
 
         for i in range(1, len(disaster_data)):
             row = disaster_data[i]
-            state, date, event_type = row[5], str(row[10]), row[8]
+            state, date, event_type = row[5], str(row[10]), row[8].lower()
 
             event_counts[(state, date, event_type)] = event_counts.get((state, date, event_type), 0) + 1
         
