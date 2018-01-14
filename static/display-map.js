@@ -9,8 +9,9 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoid2hpdGJpdCIsImEiOiJjamNjZGFrdWwxNTY3MnlyM2Vlc
     zoom: 2
   });
 
-  map.on('load', function () {
+  map.on('load', renderMap);
 
+  function renderMap () {
     var layers = map.getStyle().layers;
 
     // Find the index of the first symbol layer in the map style
@@ -46,7 +47,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoid2hpdGJpdCIsImEiOiJjamNjZGFrdWwxNTY3MnlyM2Vlc
         'fill-opacity': 0.75
       }
     }, firstSymbolId);
-  });
+  }
 
   map.on('click', 'us-states', function(e) {
     var coordinates = almostFlatten(e.features[0].geometry.coordinates);
