@@ -1,17 +1,18 @@
 mapboxgl.accessToken = 'pk.eyJ1Ijoid2hpdGJpdCIsImEiOiJjamNjZGFrdWwxNTY3MnlyM2VlcG9obngzIn0.toHPmitLn7fQbQn5NZHJrQ';
-
+    
   var map = new mapboxgl.Map({
-    container: 'map',
-    maxZoom: 5.5,
-    minZoom: 1.8,
-    style: 'mapbox://styles/mapbox/light-v9',
-    center: [-115.36957574368233, 40.732480262447524],
-    zoom: 2
-  });
+      container: 'map',
+      maxZoom: 5.5,
+      minZoom: 1.8,
+      style: 'mapbox://styles/mapbox/light-v9',
+      center: [-115.36957574368233, 40.732480262447524],
+      zoom: 2
+    });
 
   map.on('load', renderMap);
 
-  function renderMap () {
+  function renderMap() {
+
     var layers = map.getStyle().layers;
 
     // Find the index of the first symbol layer in the map style
@@ -22,6 +23,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoid2hpdGJpdCIsImEiOiJjamNjZGFrdWwxNTY3MnlyM2Vlc
             break;
         }
     }
+
 
     var statesLayer = map.addLayer({
       'id': 'us-states',
