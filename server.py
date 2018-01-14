@@ -100,6 +100,11 @@ def get_distinct_event_types():
 
 if __name__ == '__main__':
     connect_to_db(app, os.environ.get('DATABASE_URL'))
+
+    db.create_all()
+
     PORT = int(os.environ.get('PORT', 5000))
+
     DEBUG = "NO_DEBUG" not in os.environ
+    
     app.run(debug=DEBUG, host='0.0.0.0', port=PORT)
