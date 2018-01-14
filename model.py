@@ -27,12 +27,18 @@ def example_data():
 
     event1 = DisasterEvent(state='CA',
                            incident_type='Earthquake',
-                           start_date='10/17/1989')
+                           start_date='10/17/1989',
+                           count=5)
     event2 = DisasterEvent(state='CA',
                            incident_type='Fire',
-                           start_date='12/11/2017')
+                           start_date='12/11/2017',
+                           count=3)
+    event3 = DisasterEvent(state='VT',
+                          incident_type='Drought',
+                          start_date='11/27/1973',
+                          count=2)
 
-    db.session.add_all([event1, event2])
+    db.session.add_all([event1, event2, event3])
     db.session.commit()
     
 
