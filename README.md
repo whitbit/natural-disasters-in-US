@@ -12,9 +12,9 @@ This project is a simple REST API sharing US environmental disaster data from [F
 Returns events between two dates of specified event types.
 
 **Required Arguments**
-from - The start date (YYYY-MM-DD)
-to - The end date (YYYY-MM-DD)
-event_type
+* from - The start date (YYYY-MM-DD)
+* to - The end date (YYYY-MM-DD)
+* event_type
 
 
 ### <a name="run"></a>Run Locally On Machine
