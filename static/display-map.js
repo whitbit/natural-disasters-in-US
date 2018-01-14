@@ -64,11 +64,11 @@ map.on('click', 'us-states', function(e) {
 });
 
 
-function almostFlatten(arr) {
-  return arr.reduce(function (flat, toFlatten) {
-    return flat.concat(Array.isArray(toFlatten[0]) ? almostFlatten(toFlatten) : [toFlatten]);
-  }, []);
-}
+// function almostFlatten(arr) {
+//   return arr.reduce(function (flat, toFlatten) {
+//     return flat.concat(Array.isArray(toFlatten[0]) ? almostFlatten(toFlatten) : [toFlatten]);
+//   }, []);
+// }
 
 
 

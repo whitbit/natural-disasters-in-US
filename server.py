@@ -6,7 +6,7 @@ from datetime import date, datetime
 
 app = Flask(__name__)
 
-@app.route('/events-list')
+@app.route('/events_list')
 def displays_events():
     """
     Renders table filter page.
@@ -78,6 +78,12 @@ def make_query_to_db(from_date, to_date, event_types):
 
     return filtered_events
 
+@app.route('/event_types')
+def get_distinct_event_types():
+
+    event_types = db.session.query(DisasterEvent.incident_type).distinct().order_by('incident_type').all()
+
+    return jsonify(event_types)
 
 
 if __name__ == '__main__':

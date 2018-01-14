@@ -1,3 +1,24 @@
+$(window).on("load", displayFilterOptions);
+
+function displayFilterOptions() {
+
+    $.get('/event_types', function(results) {
+        var filterOptions = document.getElementById('filter-options')
+        var optionsStr = '';
+        for(var i = 0; i < results.length; i++) {
+            optionsStr += buildOptions(results[i][0]);
+        }
+        filterOptions.innerHTML = optionsStr
+    }) 
+}
+
+function buildOptions(option) {
+   
+    return '<input type="checkbox" name="event_type" value="' + option 
+           + '"<label for="' + option + '">' + option + '</label><br>'
+
+}
+
 $('#filter').on('submit', filterEvents);
 
 function filterEvents(evt) {
