@@ -23,7 +23,7 @@ function renderMap() {
           break;
       }
   }
-  
+
   var statesLayer = map.addLayer({
     'id': 'us-states',
     'type': 'fill',

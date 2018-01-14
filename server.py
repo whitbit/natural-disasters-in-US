@@ -6,7 +6,7 @@ from datetime import date, datetime
 
 app = Flask(__name__)
 
-@app.route('/events')
+@app.route('/')
 def displays_events():
     """
     Renders table filter page.
