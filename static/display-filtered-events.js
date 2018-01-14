@@ -141,7 +141,7 @@ function updateStateDensityData(statesData, incidentCounts) {
             }
         }
     }
-    console.log(statesData)
+
     return updatedStatesData
 }
 

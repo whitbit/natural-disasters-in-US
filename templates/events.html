@@ -13,15 +13,15 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-2">
-                    <h1>Filter your results</h1>
+                    <h1>Filter by</h1>
                     <form id="filter">
-                        <h3>Dates</h3>
+                        <h3>Date</h3>
                         <label>From
                             <input id="from" type="date" name="from"></label><br>
                         <label>To
                             <input id="to" type="date" name="to"></label>
 
-                        <h3>Event Types</h3>
+                        <h3>Event Type</h3>
                         <div>
                             <input type="checkbox" name="event_type" value="Flood">
                             <label for="flood">flood</label><br>
@@ -94,6 +94,9 @@
                 <!-- col -->
                 <div class="col-lg-10 col-md-10 col-sm-10">
                     <div id='map'></div>
+                    <div class='map-overlay' id='features'>
+                        <h2>US Natural</h2><div id='pd'><p>Hover over a state!</p></div></div>
+<div class='map-overlay' id='legend'></div>
                 </div>
                 <!-- map col -->
             </div>
