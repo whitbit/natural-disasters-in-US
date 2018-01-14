@@ -1,4 +1,4 @@
-#US Natural Disasters Data (1950-2017)
+# US Natural Disasters Data (1950-2017)
 
 This project is a simple REST API sharing US environmental disaster data from [FEMA](https://FEMA.gov/). For the purpose of only displaying data, the project only supports GET requests at the moment.
 
