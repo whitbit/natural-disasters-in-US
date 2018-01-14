@@ -1,6 +1,6 @@
-# US Natural Disasters Data (1950-2017)
+# US Natural Disasters Data
 
-This project is a simple REST API sharing US environmental disaster data from [FEMA](https://FEMA.gov/). For the purpose of only displaying data, the project only supports GET requests at the moment.
+This project is a simple REST API sharing US environmental disaster data between 1950-2017 from [FEMA](https://FEMA.gov/). For the purpose of only displaying data, the project only supports GET requests at the moment.
 
 ## Table of Contents
 * [GET Requests](#getrequest)
@@ -9,6 +9,7 @@ This project is a simple REST API sharing US environmental disaster data from [F
 
 ### <a name="getrequests"></a>GET Requests
 */api/events*
+
 Returns events between two dates of specified event types.
 
 **Required Arguments**
