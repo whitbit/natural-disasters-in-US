@@ -3,7 +3,13 @@ from server import app
 import csv, os
 
 def get_natural_disasters_data(csv_file):
+    """
+    Opens csv file and grabs state, date, and event_type data.
+    Builds an events counts dictionary to reduce the number of
+    redundant rows. 
 
+    Returns list of event dictionaries for db column data.
+    """
     events = []
 
     event_counts = {}
@@ -30,6 +36,10 @@ def get_natural_disasters_data(csv_file):
 
 
 def load_events_into_db(events):
+    """
+    Takes list of event objects and adds rows into database.
+    
+    """
     
     for event in events:
         state, date, incident_type, count = (event['state'],
