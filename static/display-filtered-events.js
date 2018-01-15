@@ -5,6 +5,7 @@ $(document).ready(function() {
 $(window).on("load", displayFilterOptions);
 
 function displayFilterOptions() {
+    // displays event type checkbox form
 
     $.get('/event_types', function(results) {
         var filterOptions = document.getElementById('filter-options')
@@ -17,6 +18,7 @@ function displayFilterOptions() {
 }
 
 function buildOptions(option) {
+    // builds HTML string for event type checkbox
 
     return '<input type="checkbox" name="event_type" value="' + option 
            + '"<label for="' + option + '">' + option + '</label><br>'
@@ -26,6 +28,7 @@ function buildOptions(option) {
 $('#filter').on('submit', filterEvents);
 
 function filterEvents(evt) {
+    // sends form inputs to server and returns filtered results
 
     evt.preventDefault();
 
@@ -47,6 +50,7 @@ function filterEvents(evt) {
 
 
 function rendersFilteredEvents(results) {
+    // builds table of filtered result events
 
     for(var i = 0; i < results.length; i++) {
         $('table').append(buildTableRow(results[i]));
@@ -55,6 +59,8 @@ function rendersFilteredEvents(results) {
 
 
 function buildTableRow(event) {
+    // builds table row string of each event
+
     var state = event['state']
     var incidentType = event['incidentType']
     var startDate = event['startDate']
@@ -65,11 +71,12 @@ function buildTableRow(event) {
                 <td>' + incidentType + '</td> \
                 <td>' + startDate + '</td>\
                 <td>' + count + '</td>\
-            <tr>'
+            </tr>'
 }
 
 
 function rendersMapDensities(results) {
+    // updates state densities and sets new map layer
 
     var incidentDensities = getStateIncidentCounts(results);
 
@@ -81,6 +88,8 @@ function rendersMapDensities(results) {
 
 
 function getStateIncidentCounts(results) {
+    // counts total number of incidents per state with ajax results
+
     var stateDisasterCounts = {};
 
     for(var i = 0; i < results.length; i++) {
@@ -97,6 +106,7 @@ function getStateIncidentCounts(results) {
 }
 
 function updateStateDensityData(statesData, incidentCounts) {
+    // makes copy of original geojson data and updates with new density data
 
     var updatedStatesData = jQuery.extend(true, {}, statesData);
 
@@ -113,6 +123,8 @@ function updateStateDensityData(statesData, incidentCounts) {
 }
 
 function convertToStateName(stateAbbrev) {
+    // converts state abbreviation to full name
+    
     var stateConversions = {
         'AL': 'Alabama',
         'AK': 'Alaska',
