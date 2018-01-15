@@ -56,19 +56,18 @@ function renderMap() {
 
 map.on('mousemove', function(e) {
 
-  if(isSourceLoaded('us-states')) {
+  if(map.loaded()) {
     var states = map.queryRenderedFeatures(e.point, {
     layers: ['us-states']
     });
-  }
-  
 
-  if (states.length > 0) {
+    if (states.length > 0) {
     document.getElementById('pd').innerHTML = '<h3><strong>' + states[0].properties.name + '</strong></h3> \
                                               <p><strong><em>' + states[0].properties.density + '</strong> \
                                               total occurence(s)</em></p>';
-  } else {
-    document.getElementById('pd').innerHTML = '<p>Hover over a state or scroll down for table details!</p>'
+    } else {
+      document.getElementById('pd').innerHTML = '<p>Hover over a state or scroll down for table details!</p>'
+    }
   }
 });
 
