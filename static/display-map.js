@@ -55,9 +55,13 @@ function renderMap() {
 }
 
 map.on('mousemove', function(e) {
-  var states = map.queryRenderedFeatures(e.point, {
+
+  if(isSourceLoaded('us-states') {
+    var states = map.queryRenderedFeatures(e.point, {
     layers: ['us-states']
-  });
+    });
+  })
+  
 
   if (states.length > 0) {
     document.getElementById('pd').innerHTML = '<h3><strong>' + states[0].properties.name + '</strong></h3> \
