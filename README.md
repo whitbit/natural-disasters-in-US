@@ -29,6 +29,6 @@ Returns events between two dates of specified event types.
     * `python seed.py`
 * Start up the flask server
     * `python server.py`
-* Go to [localhost:3000](http://localhost:5000/) to see the home page
+* Go to [localhost:5000](http://localhost:5000/) to see the home page
 
 
