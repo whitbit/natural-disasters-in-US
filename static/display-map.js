@@ -56,11 +56,11 @@ function renderMap() {
 
 map.on('mousemove', function(e) {
 
-  if(isSourceLoaded('us-states') {
+  if(isSourceLoaded('us-states')) {
     var states = map.queryRenderedFeatures(e.point, {
     layers: ['us-states']
     });
-  })
+  }
   
 
   if (states.length > 0) {
